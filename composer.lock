@@ -1,0 +1,66 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "9802b420321cb59bd2ed18e18beccd74",
+    "packages": [
+        {
+            "name": "baba/object-cache",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sjurajpuchky/object-cache.git",
+                "reference": "b6d4eee702c997b9cfc3fa5e85ee34df28d74ec9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sjurajpuchky/object-cache/zipball/b6d4eee702c997b9cfc3fa5e85ee34df28d74ec9",
+                "reference": "b6d4eee702c997b9cfc3fa5e85ee34df28d74ec9",
+                "shasum": ""
+            },
+            "provide": {
+                "baba/object-cache": "1.0.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "BABA\\Cache\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Juraj Puchký - BABA Tumise s.r.o.",
+                    "email": "info@baba.bj"
+                }
+            ],
+            "description": "Simple framework for store php json serialized objects in cache. Supports Redis, Memcached, Disk.",
+            "support": {
+                "issues": "https://github.com/sjurajpuchky/object-cache/issues",
+                "source": "https://github.com/sjurajpuchky/object-cache/tree/main"
+            },
+            "time": "2021-07-28T01:12:54+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "baba/object-cache": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "ext-json": "*",
+        "ext-dom": "*",
+        "ext-libxml": "*"
+    },
+    "platform-dev": [],
+    "plugin-api-version": "2.0.0"
+}

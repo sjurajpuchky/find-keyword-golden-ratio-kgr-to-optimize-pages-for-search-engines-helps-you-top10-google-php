@@ -9,6 +9,15 @@ namespace BABA\Search;
  */
 class Engine {
 
+
+    public static function prepareDom($data) {
+        libxml_use_internal_errors(true);
+        $urls = [];
+        $dom = new DOMDocument();
+        @$dom->loadHTML($data);
+        libxml_clear_errors();
+    }
+
     public static function getData($url) {
         //sleep(1);
         $ch = curl_init();

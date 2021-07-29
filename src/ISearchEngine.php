@@ -8,6 +8,6 @@ namespace BABA\Search;
  */
 interface ISearchEngine {
 
-    public function search($keyword, $language, $num, $from) : array;
-    public function collectResultData($keyword, $language, $num, $from) : string;
+    public function search($keyword, $language, $num, $from);
+    public function collectResultData($keyword, $language, $num, $from);
 }

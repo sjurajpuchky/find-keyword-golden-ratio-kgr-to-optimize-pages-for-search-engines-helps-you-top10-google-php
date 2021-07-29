@@ -1,0 +1,25 @@
+{
+  "name": "baba/search-analytics-utilities",
+  "type": "library",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Juraj Puchký - BABA Tumise s.r.o.",
+      "email": "info@baba.bj"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "\\BABA\\Search\\": "src/"
+    }
+  },
+  "provide": {
+    "baba/search-analytics-utilities": "1.0.0"
+  },
+  "require": {
+    "ext-json": "*",
+    "baba/object-cache": "dev-main",
+    "ext-dom": "*",
+    "ext-libxml": "*"
+  }
+}
