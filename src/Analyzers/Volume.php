@@ -3,31 +3,13 @@
 
 namespace BABA\Search\Analyzers;
 
+use BABA\Search\Analyzer;
+use BABA\Search\IAnalyzer;
 
-class Volume implements Analyzer
+class Volume extends Analyzer implements IAnalyzer
 {
-    /** @var ISearch */
-    private $engine;
-
-    /**
-     * Position constructor.
-     */
-    public function __construct($engine)
+    public function getResult($keyword, $language, $opts = [])
     {
-        $this->engine = $engine;
-    }
-
-    public function getPossition($keyword, $domain, $language, $num = 100, $from = 0)
-    {
-        $urls = $this->engine->search($keyword, $language, $num, $from);
-        $position = 1;
-        foreach($urls as $url) {
-            if(preg_match('/'.addslashes($domain).'/',$url)) {
-                break;
-            }
-            $position++;
-        }
-
-        return $position;
+        return 0;
     }
 }

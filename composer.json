@@ -1,7 +1,7 @@
 {
   "name": "baba/search-analytics-utilities",
   "type": "library",
-  "license": "proprietary",
+  "license": "GPL-2.0-only",
   "authors": [
     {
       "name": "Juraj Puchký - BABA Tumise s.r.o.",
@@ -10,7 +10,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "\\BABA\\Search\\": "src/"
+      "BABA\\Search\\": "src/"
     }
   },
   "provide": {
@@ -20,6 +20,8 @@
     "ext-json": "*",
     "baba/object-cache": "dev-main",
     "ext-dom": "*",
-    "ext-libxml": "*"
+    "ext-libxml": "*",
+    "ext-curl": "*",
+    "googleads/googleads-php-lib": "^53.1"
   }
 }

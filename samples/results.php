@@ -8,5 +8,5 @@ use BABA\Search\Engines\Google;
 
 $engine = new Google();
 $keyword = 'test';
-$results = (new Results($engine))->getResult($keyword, 'cs');
+$results = (new Results($engine))->getResult($keyword, 'lang_cs');
 echo "Results: {$results} for {$keyword}\n";

@@ -2,6 +2,8 @@
 
 namespace BABA\Search;
 
+use DOMDocument;
+
 /**
  * Description of Search
  *
@@ -10,30 +12,67 @@ namespace BABA\Search;
 class Engine {
 
 
+    /**
+     * @param $data
+     * @return DOMDocument
+     */
     public static function prepareDom($data) {
         libxml_use_internal_errors(true);
         $urls = [];
         $dom = new DOMDocument();
         @$dom->loadHTML($data);
         libxml_clear_errors();
+
+        return $dom;
     }
 
-    public static function getData($url) {
-        //sleep(1);
+    private static function write_cookies(ISearchEngine $engine, $cookies)
+    {
+        file_put_contents($engine->getName().'.txt', implode("\n",$cookies));
+    }
+
+    public function getCookies($url) {
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_HEADER, 1);
+        curl_setopt($ch, CURLOPT_COOKIEJAR, $this->getName().'.txt');
+        curl_setopt($ch, CURLOPT_COOKIEFILE,$this->getName().'.txt');
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION,1);
+        $result = curl_exec($ch);
+        curl_close($ch);
+        preg_match_all('/cookie:\s*([^;]*)/mi', $result, $matches);
+        $cookies = array();
+        foreach($matches[1] as $item) {
+            parse_str($item, $cookie);
+            $cookies = array_merge($cookies, $cookie);
+        }
+
+        return $cookies;
+    }
+    /**
+     * @param $url
+     * @return bool|string
+     */
+    public function getData($url,$userAgent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36') {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_VERBOSE, false);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($ch, CURLOPT_COOKIEJAR, $this->getName().'.txt');
+        curl_setopt($ch, CURLOPT_COOKIEFILE,$this->getName().'.txt');
 
-        $userAgent = 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.2 (KHTML, like Gecko) Chrome/22.0.1216.0 Safari/537.2';
 
         curl_setopt($ch, CURLOPT_USERAGENT, $userAgent);
         return curl_exec($ch);
     }
 
-    public static function normalizeUrl($url) {
+    /**
+     * @param $url
+     * @return string
+     */
+    public function normalizeUrl($url) {
         $normalizedUrl = $url;
 
         if (preg_match('/https?:\/\/.+\//', $url)) {
@@ -56,4 +95,6 @@ class Engine {
 
         return $normalizedUrl;
     }
+
+
 }

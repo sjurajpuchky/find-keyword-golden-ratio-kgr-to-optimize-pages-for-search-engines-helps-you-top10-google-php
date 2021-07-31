@@ -51,6 +51,11 @@ class Google extends Engine implements ISearchEngine {
      */
     public function collectResultData($keyword, $language, $num, $from = 0)
     {
-        return Engine::getData(self::SEARCH_URL . urlencode($keyword) . "&num=$num&hl=$language&start=$from");
+        return $this->getData(self::SEARCH_URL . urlencode($keyword) . "&oq=".urlencode($keyword)."&ie=UTF-8&num=$num&hl=$language&start=$from");
     }
+
+    public function getName() {
+        return "Google";
+    }
+
 }
