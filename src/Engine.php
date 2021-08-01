@@ -96,5 +96,25 @@ class Engine {
         return $normalizedUrl;
     }
 
+    public static function parseIni($configFile) {
+        $ini = parse_ini_file($configFile,true);
 
+        if(!$ini) {
+            throw new Exception("Error parsing $configFile");
+        }
+
+        return $ini;
+    }
+
+    public static function storeIni($configFile, $ini) {
+        if(file_exists($configFile)) {
+            rename($configFile, $configFile . '.old-' . time());
+        }
+        foreach($ini as $section => $values) {
+            file_put_contents($configFile,'['.$section.']'."\n",FILE_APPEND);
+            foreach($values as $name => $value) {
+                file_put_contents($configFile,$name.' = "'.$value.'"'."\n",FILE_APPEND);
+            }
+        }
+    }
 }

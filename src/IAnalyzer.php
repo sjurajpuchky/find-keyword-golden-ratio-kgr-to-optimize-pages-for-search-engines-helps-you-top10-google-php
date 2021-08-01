@@ -6,5 +6,5 @@ namespace BABA\Search;
 
 interface IAnalyzer
 {
-    public function getResult($keyword, $language, $opts = []);
+    public function getResult($keywords, $language, $locations = [], $opts = []);
 }

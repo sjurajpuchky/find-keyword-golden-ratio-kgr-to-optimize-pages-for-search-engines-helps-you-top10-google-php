@@ -8,8 +8,12 @@ use BABA\Search\IAnalyzer;
 
 class Volume extends Analyzer implements IAnalyzer
 {
-    public function getResult($keyword, $language, $opts = [])
+    public function getResult($param, $language,$location, $opts = [])
     {
-        return 0;
+        if($this->engine->isAuthenticated()) {
+            return $this->engine->getVolume($param, $language, $location, $opts);
+        } else {
+            throw new \Exception("You must be authenticated to service of {$this->engine->getName()}.");
+        }
     }
 }
