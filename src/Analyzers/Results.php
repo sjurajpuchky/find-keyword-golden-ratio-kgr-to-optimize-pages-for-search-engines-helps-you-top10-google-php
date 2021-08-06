@@ -12,17 +12,9 @@ use DOMXPath;
 class Results extends Analyzer implements IAnalyzer
 {
 
-    public function getResult($keyword, $language, $opts = [])
+    public function getResult($keyword, $language,$location, $opts = [])
     {
-        $dom = Engine::prepareDom($this->engine->collectResultData($keyword, $language,10,0));
-        $xpath = new DOMXPath($dom);
-        $elm = $xpath->query("//*/div[@id='result-stats']")->item(0);
-        if($elm) {
-            $result = $elm->textContent;
-            $result = explode('(',explode(':',$result)[1])[0];
-            return str_replace([' '," "],'',$result);
-        }
-        return 0;
+         return  $this->engine->getResults($keyword, $language, $location, $opts);
     }
 
 }

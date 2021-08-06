@@ -5,6 +5,7 @@ namespace BABA\Search\Engines;
 use BABA\Search\Engine;
 use BABA\Search\ISearchEngine;
 use DOMXPath;
+use Exception;
 use GetOpt\GetOpt;
 use Google\Ads\GoogleAds\Examples\Utils\ArgumentNames;
 use Google\Ads\GoogleAds\Examples\Utils\ArgumentParser;
@@ -38,10 +39,10 @@ class Google extends Engine implements ISearchEngine
      * @param int $from
      * @return array
      */
-    public function search($keyword, $language, $num, $from = 0): array
+    public function search($keyword, $language, $location, $num, $from = 0): array
     {
         $urls = [];
-        $dom = self::prepareDom($this->collectResultData($keyword, $language, $num, $from));
+        $dom = self::prepareDom($this->collectResultData($keyword, $language, $location, $num, $from));
         $xp = new DOMXPath($dom);
         $results = $xp->query('//*/div[@class="kCrYT"]');
         foreach ($results as $r) {
@@ -62,7 +63,7 @@ class Google extends Engine implements ISearchEngine
      * @param int $from
      * @return string|null
      */
-    public function collectResultData($keyword, $language, $num, $from = 0): ?string
+    public function collectResultData($keyword, $language, $location, $num, $from = 0): ?string
     {
         return $this->getData(self::SEARCH_URL . urlencode($keyword) . "&oq=" . urlencode($keyword) . "&ie=UTF-8&num=$num&hl=$language&start=$from");
     }
@@ -90,25 +91,30 @@ class Google extends Engine implements ISearchEngine
      */
     private const REDIRECT_URI = 'urn:ietf:wg:oauth:2.0:oob';
 
-    public function authentication($configFile = './tokens/google-ads.ini')
+    /**
+     * @param string $configFile
+     * @return bool
+     * @throws Exception
+     */
+    public function authentication($configFile = './tokens/google-ads.ini'): bool
     {
         if (!file_exists($configFile)) {
-            throw new \Exception("$configFile does not exists.");
+            throw new Exception("$configFile does not exists.");
         }
 
         $ini = Engine::parseIni($configFile);
 
         if (empty($ini['GOOGLE_ADS']['developerToken'])) {
-            throw new \Exception("developerToken is required in $configFile section [GOOGLE_ADS], you can request it on ads.google.com with MMC account\n");
+            throw new Exception("developerToken is required in $configFile section [GOOGLE_ADS], you can request it on ads.google.com with MMC account\n");
         }
         if (empty($ini['GOOGLE_ADS']['clientCustomerId'])) {
-            throw new \Exception("clientCustomerId is required in $configFile section [GOOGLE_ADS], you can request it on ads.google.com with MMC account\n");
+            throw new Exception("clientCustomerId is required in $configFile section [GOOGLE_ADS], you can request it on ads.google.com with MMC account\n");
         }
         if (empty($ini['OAUTH2']['clientId'])) {
-            throw new \Exception("clientId is required in $configFile section [OAUTH2], you can request in on https://console.cloud.google.com/apis/credentials/oauthclient, register your credentials as Desktop application\n");
+            throw new Exception("clientId is required in $configFile section [OAUTH2], you can request in on https://console.cloud.google.com/apis/credentials/oauthclient, register your credentials as Desktop application\n");
         }
         if (empty($ini['OAUTH2']['clientSecret'])) {
-            throw new \Exception("clientSecret is required in $configFile section [OAUTH2], you can request in on https://console.cloud.google.com/apis/credentials/oauthclient, register your credentials as Desktop application\n");
+            throw new Exception("clientSecret is required in $configFile section [OAUTH2], you can request in on https://console.cloud.google.com/apis/credentials/oauthclient, register your credentials as Desktop application\n");
         }
         if (empty($ini['OAUTH2']['refreshToken'])) {
 
@@ -140,7 +146,7 @@ class Google extends Engine implements ISearchEngine
                 $ini['OAUTH2']['refreshToken'] = $authToken['refresh_token'];
                 Engine::storeIni($configFile, $ini);
             } else {
-                throw new \Exception("Authentication failed.");
+                throw new Exception("Authentication failed.");
             }
         }
         $this->config = $ini;
@@ -149,28 +155,45 @@ class Google extends Engine implements ISearchEngine
         return $this->authenticated = true;
     }
 
-    public function getConfigFile()
+    /**
+     * @return string
+     */
+    public function getConfigFile(): string
     {
         return $this->configFile;
     }
 
-    public function getConfig()
+    /**
+     * @return array
+     */
+    public function getConfig(): array
     {
         return $this->config;
     }
 
-    public function isAuthenticated()
+    /**
+     * @return bool
+     */
+    public function isAuthenticated(): bool
     {
         return $this->authenticated;
     }
 
-    public function getSuggestions($param, $languageId, $locationIds, $opts)
+    /**
+     * @param $param
+     * @param $languageId
+     * @param $locationIds
+     * @param $opts
+     * @return array
+     * @throws Exception
+     */
+    public function getVolume($param, $languageId, $locationIds, $opts): array
     {
         if (is_null($languageId)) {
-            throw new \Exception("Check for language criteria id on https://developers.google.com/adwords/api/docs/appendix/codes-formats#languages");
+            throw new Exception("Check for language criteria id on https://developers.google.com/adwords/api/docs/appendix/codes-formats#languages");
         }
         if (is_null($locationIds) || empty($locationIds)) {
-            throw new \Exception("Check for location criteria id on https://developers.google.com/adwords/api/docs/appendix/geotargeting");
+            throw new Exception("Check for location criteria id on https://developers.google.com/adwords/api/docs/appendix/geotargeting");
         }
 
         $oAuth2Credential = (new OAuth2TokenBuilder())->fromFile($this->getConfigFile())->build();
@@ -211,7 +234,7 @@ class Google extends Engine implements ISearchEngine
         $i = 0;
         foreach ($response->iterateAllElements() as $result) {
             /** @var GenerateKeywordIdeaResult $result */
-            if ($opts['max-volume'] >= is_null($result->getKeywordIdeaMetrics()) ? 0 : $result->getKeywordIdeaMetrics()->getAvgMonthlySearches()  && $opts['min-volume'] <= is_null($result->getKeywordIdeaMetrics()) ? 0 : $result->getKeywordIdeaMetrics()->getAvgMonthlySearches()) {
+            if ($opts['max-volume'] >= is_null($result->getKeywordIdeaMetrics()) ? 0 : ($result->getKeywordIdeaMetrics()->getAvgMonthlySearches() && $opts['min-volume'] <= is_null($result->getKeywordIdeaMetrics()) ? 0 : $result->getKeywordIdeaMetrics()->getAvgMonthlySearches())) {
                 $results[$result->getText()] = [
                     'mothly' => is_null($result->getKeywordIdeaMetrics()) ? 0 : $result->getKeywordIdeaMetrics()->getAvgMonthlySearches(),
                     'competition' => is_null($result->getKeywordIdeaMetrics()) ? 0 : $result->getKeywordIdeaMetrics()->getCompetition()];
@@ -224,5 +247,96 @@ class Google extends Engine implements ISearchEngine
         }
 
         return $results;
+    }
+
+    /**
+     * @param $param
+     * @param $languageId
+     * @param $locationIds
+     * @param $opts
+     * @return array
+     * @throws Exception
+     */
+    public function getSuggestions($param, $languageId, $locationIds, $opts): array
+    {
+        if (is_null($languageId)) {
+            throw new Exception("Check for language criteria id on https://developers.google.com/adwords/api/docs/appendix/codes-formats#languages");
+        }
+        if (is_null($locationIds) || empty($locationIds)) {
+            throw new Exception("Check for location criteria id on https://developers.google.com/adwords/api/docs/appendix/geotargeting");
+        }
+
+        $oAuth2Credential = (new OAuth2TokenBuilder())->fromFile($this->getConfigFile())->build();
+        $googleAdsClient = (new GoogleAdsClientBuilder())->fromFile($this->getConfigFile())
+            ->withOAuth2Credential($oAuth2Credential)
+            ->build();
+        $keywordPlanIdeaServiceClient = $googleAdsClient->getKeywordPlanIdeaServiceClient();
+
+        if (empty($param)) {
+            throw new \InvalidArgumentException(
+                'At least one of keywords or page URL is required, but neither was specified.'
+            );
+        }
+
+        $requestOptionalArgs = [];
+        if (!is_array($param)) {
+            $requestOptionalArgs['urlSeed'] = new UrlSeed(['url' => $param]);
+        } else {
+            $requestOptionalArgs['keywordSeed'] = new KeywordSeed(['keywords' => $param]);
+        }
+
+
+        $geoTargetConstants = array_map(function ($locationId) {
+            return ResourceNames::forGeoTargetConstant($locationId);
+        }, $locationIds);
+
+
+        $response = $keywordPlanIdeaServiceClient->generateKeywordIdeas(
+            [
+
+                'language' => ResourceNames::forLanguageConstant($languageId),
+                'customerId' => $this->config['GOOGLE_ADS']['clientCustomerId'],
+                'geoTargetConstants' => $geoTargetConstants,
+                'keywordPlanNetwork' => KeywordPlanNetwork::GOOGLE_SEARCH_AND_PARTNERS
+            ] + $requestOptionalArgs
+        );
+        $results = [];
+        $i = 0;
+        foreach ($response->iterateAllElements() as $result) {
+            /** @var GenerateKeywordIdeaResult $result */
+            if ($opts['max-volume'] >= is_null($result->getKeywordIdeaMetrics()) ? 0 : ($result->getKeywordIdeaMetrics()->getAvgMonthlySearches() && $opts['min-volume'] <= is_null($result->getKeywordIdeaMetrics()) ? 0 : $result->getKeywordIdeaMetrics()->getAvgMonthlySearches())) {
+                $results[$result->getText()] = [
+                    'mothly' => is_null($result->getKeywordIdeaMetrics()) ? 0 : $result->getKeywordIdeaMetrics()->getAvgMonthlySearches(),
+                    'competition' => is_null($result->getKeywordIdeaMetrics()) ? 0 : $result->getKeywordIdeaMetrics()->getCompetition()];
+
+                $i++;
+            }
+            if ($i > $opts['number-results']) {
+                break;
+            }
+        }
+
+        return $results;
+    }
+
+    /**
+     * @param $keyword
+     * @param $language
+     * @param $location
+     * @param $opts
+     * @return int|string|string[]
+     */
+    public function getResults($keyword, $language, $location, $opts)
+    {
+        $dom = Engine::prepareDom($this->collectResultData($keyword, $language, $location, 10, 0));
+        $xpath = new DOMXPath($dom);
+        $elm = $xpath->query("//*/div[@id='result-stats']")->item(0);
+        if ($elm) {
+            $result = $elm->textContent;
+            $result = explode('(', explode(':', $result)[1])[0];
+            return str_replace([' ', " "], '', $result);
+        }
+
+        return 0;
     }
 }
