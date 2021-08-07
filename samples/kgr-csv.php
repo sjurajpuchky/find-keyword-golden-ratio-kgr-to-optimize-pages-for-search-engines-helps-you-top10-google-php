@@ -10,6 +10,7 @@ use BABA\Search\Engines\Google;
 $engine = new Google();
 $cache = new \BABA\Cache\Cache(new \BABA\Cache\Drivers\Disk());
 $list = [];
+$volumes = [];
 if($argc > 1) {
     $fp = fopen($argv[1], 'r');
     $head = fgetcsv($fp, 10000, ";");
@@ -23,10 +24,17 @@ if($argc > 1) {
         echo "Checking $keyword ($results)\n";
         if (KGR::isKgr($results, $volume)) {
             $list[$keyword] = $results / $volume;
+            $volumes[$keyword] = $volume;
             echo "Found kgr $keyword\n";
         }
     }
-    var_dump($list);
+
+    $t = 0;
+    foreach($list as $keyword => $kgr) {
+        echo "$keyword:$kgr:".$volumes[$keyword]."\n";
+        $t += (1/$kgr) * $volumes[$keyword];
+     }
+    echo "Totally potential $t\n";
 } else {
     echo "Usage: php kgr-csv.php <csv file>\n";
 }
