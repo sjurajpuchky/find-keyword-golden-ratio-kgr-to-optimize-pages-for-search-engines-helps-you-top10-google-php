@@ -7,6 +7,7 @@ use BABA\Search\Engines\Google;
 
 
 $engine = new Google();
+$cache = new \BABA\Cache\Cache(new \BABA\Cache\Drivers\Disk());
 $keyword = 'test';
-$results = (new Results($engine))->getResult($keyword, 'lang_cs');
+$results = (new Results($engine,$cache))->getResult($keyword, 'lang_cs');
 echo "Results: {$results} for {$keyword}\n";

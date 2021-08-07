@@ -17,6 +17,7 @@
     "baba/search-analytics-utilities": "1.0.0"
   },
   "require": {
+    "php": ">=7.3",
     "ext-json": "*",
     "baba/object-cache": "dev-main",
     "ext-dom": "*",

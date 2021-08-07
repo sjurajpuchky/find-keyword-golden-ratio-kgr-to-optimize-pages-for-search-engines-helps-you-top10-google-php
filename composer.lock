@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "471fb26b4cf22688411f79463d7ff839",
+    "content-hash": "071a462ab651acecd6c7e4618890b6c6",
     "packages": [
         {
             "name": "baba/object-cache",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sjurajpuchky/object-cache.git",
-                "reference": "b6d4eee702c997b9cfc3fa5e85ee34df28d74ec9"
+                "reference": "70a15e34785563500015050332ce5142c08136be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sjurajpuchky/object-cache/zipball/b6d4eee702c997b9cfc3fa5e85ee34df28d74ec9",
-                "reference": "b6d4eee702c997b9cfc3fa5e85ee34df28d74ec9",
+                "url": "https://api.github.com/repos/sjurajpuchky/object-cache/zipball/70a15e34785563500015050332ce5142c08136be",
+                "reference": "70a15e34785563500015050332ce5142c08136be",
                 "shasum": ""
             },
             "provide": {
@@ -45,7 +45,7 @@
                 "issues": "https://github.com/sjurajpuchky/object-cache/issues",
                 "source": "https://github.com/sjurajpuchky/object-cache/tree/main"
             },
-            "time": "2021-07-28T01:12:54+00:00"
+            "time": "2021-08-07T01:36:04+00:00"
         },
         {
             "name": "firebase/php-jwt",
@@ -1639,6 +1639,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
+        "php": ">=7.3",
         "ext-json": "*",
         "ext-dom": "*",
         "ext-libxml": "*",
