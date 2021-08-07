@@ -27,9 +27,9 @@ class Analyzer
     public function prepareCacheKey($keywords, $language, $locations): string
     {
         if (is_array($keywords)) {
-            $cacheKey = $this->getName() . '_' . $language . '_' . implode('-', $locations) . '_' . implode('-', $keywords);
+            $cacheKey = $this->engine->getName().'_'.$this->getName() . '_' . $language . '_' . implode('-', $locations) . '_' . implode('-', $keywords);
         } else {
-            $cacheKey = $this->getName() . '_' . $language . '_' . implode('-', $locations) . '_' . $keywords;
+            $cacheKey = $this->engine->getName().'_'.$this->getName() . '_' . $language . '_' . implode('-', $locations) . '_' . $keywords;
         }
 
         return $cacheKey;
