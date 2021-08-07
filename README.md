@@ -1,5 +1,8 @@
 # search-analytics-utilities
 Main purpose of this library is to automate SEO routine for finding KGR.
+
+###Free keyword golder ratio tool.
+
 For that is needed to find out number of search results on Google and monthly search volume for each keyword idea.
 
 ---
