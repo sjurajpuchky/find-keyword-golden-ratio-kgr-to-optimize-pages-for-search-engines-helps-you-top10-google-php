@@ -1,6 +1,12 @@
 # search-analytics-utilities
 Main purpose of this library is to automate SEO routine for finding KGR.
 
+# Install
+
+git clone https://github.com/sjurajpuchky/search-analytics-utilities.git or download from https://github.com/sjurajpuchky/search-analytics-utilities and unzip
+cd search-analytics-utilities
+composer install
+
 ### Free keyword golden ratio tool.
 
 For that is needed to find out number of search results on Google and monthly search volume for each keyword idea.
