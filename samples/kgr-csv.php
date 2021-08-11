@@ -26,7 +26,11 @@ if($argc > 1) {
             if (KGR::isKgr($results, $volume)) {
                 $list[$keyword] = $results / $volume;
                 $volumes[$keyword] = $volume;
-                echo "Kgr with {$list[$keyword]} and {$results} results found\n";
+                if($results == 1) {
+                    echo "Kgr with {$list[$keyword]} and {$results} result found\n";
+                } else {
+                    echo "Kgr with {$list[$keyword]} and {$results} results found\n";
+                }
             } else {
                 echo "Not kgr\n";
             }
