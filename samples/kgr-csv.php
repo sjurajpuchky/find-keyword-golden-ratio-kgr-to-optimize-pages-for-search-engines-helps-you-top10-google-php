@@ -29,7 +29,7 @@ if($argc > 1) {
                 $volumes[$keyword] = $volume;
                 echo "Found kgr with {$list[$keyword]}\n";
             } else {
-                echo "Not kgr\n"
+                echo "Not kgr\n";
             }
         } else {
             echo "Ignoring $keyword for $volume\n";
