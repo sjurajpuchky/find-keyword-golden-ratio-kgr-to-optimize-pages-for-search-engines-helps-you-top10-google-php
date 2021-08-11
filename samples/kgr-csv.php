@@ -8,7 +8,7 @@ use BABA\Search\Engines\Google;
 
 
 $engine = new Google();
-$cache = new \BABA\Cache\Cache(new \BABA\Cache\Drivers\Disk());
+$cache = new \BABA\Cache\Cache(new \BABA\Cache\Drivers\Disk(),24*3600);
 $list = [];
 $potentialy = [];
 $volumes = [];
