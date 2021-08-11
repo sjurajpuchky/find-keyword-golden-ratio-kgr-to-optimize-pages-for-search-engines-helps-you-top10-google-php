@@ -32,7 +32,11 @@ if($argc > 1) {
                     echo "Kgr with {$list[$keyword]} and {$results} results found\n";
                 }
             } else {
-                echo "Not kgr\n";
+                if($volume == 0) {
+                    echo "Potentialy future kgr\n";
+                } else {
+                    echo "Not kgr\n";
+                }
             }
         } else {
             echo "Ignoring $keyword for $volume\n";
