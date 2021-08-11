@@ -29,7 +29,7 @@ Our library depends on the package "baba/object-cache", which is used for preven
 # Examples
 In folder samples you can find some basic usage of library.
 
-`php samples/kgr-csv.php ./samples/keywords.csv ./results.csv`
+`php samples/kgr-csv.php ./samples/keywords.csv ./results.csv ./future.csv`
 
 # How to use it?
 As you can see in samples you have to first make instance of Engine then pass Engine to Analyzer tool, which has an interface to call operation with results.
