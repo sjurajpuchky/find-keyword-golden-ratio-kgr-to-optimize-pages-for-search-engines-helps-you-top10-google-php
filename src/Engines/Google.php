@@ -334,7 +334,15 @@ class Google extends Engine implements ISearchEngine
         if ($elm) {
             $result = $elm->textContent;
             if (!empty($result)) {
-                $result = explode('(', explode(':', $result)[1])[0];
+                 $presult = explode(':', $result);
+                 if(isset($presult[1])) {
+                     $result = explode('(',
+                         $presult[1])
+                     [0];
+                 } else {
+                     preg_match('/([0-9 ]+).+/',$result,$matches);
+                     return str_replace([' ', " "], '', $matches[1]);
+                 }
                 return str_replace([' ', " "], '', $result);
             } else {
                 return 0;

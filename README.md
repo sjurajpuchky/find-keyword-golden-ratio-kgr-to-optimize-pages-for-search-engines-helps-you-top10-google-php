@@ -7,6 +7,9 @@ git clone https://github.com/sjurajpuchky/search-analytics-utilities.git or down
 cd search-analytics-utilities
 composer install
 
+For google-ads-api suggestions you need activated mmc account and developer key, once you can't have it you can use sample kgr-csv.php with keywords and volumes in csv, which you can obtain from google-ads onr another seo tool as well.
+Feel free to look into samples folder and checkout 
+
 ### Free keyword golden ratio tool.
 
 For that is needed to find out number of search results on Google and monthly search volume for each keyword idea.
