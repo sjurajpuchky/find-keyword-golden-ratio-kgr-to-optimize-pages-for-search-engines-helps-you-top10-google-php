@@ -48,5 +48,7 @@ https://www.baba.bj
 
 1.0.1 - some fixes regarding kgr specification
 
+1.0.2 - future keywords
+
 # Copyright
 &copy; 2021 BABA Tumise s.r.o.
