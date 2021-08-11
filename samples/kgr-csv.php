@@ -21,12 +21,15 @@ if($argc > 1) {
     fclose($fp);
     foreach ($keywords as $keyword => $volume) {
         if($volume <= 250) {
+            echo "Checking $keyword ($volume)...";
             $results = (new Results($engine, $cache))->getResult($keyword, 'lang_cs', ['cs'], ['allintitle' => true]);
             echo "Checking $keyword ($results/$volume)\n";
             if (KGR::isKgr($results, $volume)) {
                 $list[$keyword] = $results / $volume;
                 $volumes[$keyword] = $volume;
-                echo "Found kgr $keyword with {$list[$keyword]}\n";
+                echo "Found kgr with {$list[$keyword]}\n";
+            } else {
+                echo "Not kgr\n"
             }
         } else {
             echo "Ignoring $keyword for $volume\n";
