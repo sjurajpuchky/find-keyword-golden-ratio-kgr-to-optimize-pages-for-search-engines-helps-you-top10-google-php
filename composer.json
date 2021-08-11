@@ -14,7 +14,7 @@
     }
   },
   "provide": {
-    "baba/search-analytics-utilities": "1.0.1"
+    "baba/search-analytics-utilities": "1.0.2"
   },
   "require": {
     "php": ">=7.3",
