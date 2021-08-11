@@ -340,7 +340,6 @@ class Google extends Engine implements ISearchEngine
                 return 0;
             }
         }
-        }
 
         return 0;
     }
