@@ -40,6 +40,9 @@ class KGR extends Analyzer implements IAnalyzer
         if($volume > 250) {
             return false;
         }
+        if($volume == 0) {
+            return false;
+        }
         return ($numberOfResults / $volume) <= 0.25;
     }
 
