@@ -52,7 +52,7 @@ if ($argc > 3) {
         if ($kgr == 0) {
             $t += $volumes[$keyword];
         } else {
-            $t += (1 / $kgr) * $volumes[$keyword];
+            $t += $kgr * $volumes[$keyword];
         }
     }
     file_put_contents($argv[2], $content);
