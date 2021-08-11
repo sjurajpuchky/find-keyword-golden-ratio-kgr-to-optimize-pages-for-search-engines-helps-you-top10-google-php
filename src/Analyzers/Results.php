@@ -16,6 +16,9 @@ class Results extends Analyzer implements IAnalyzer
         if ($this->isCached($cacheKey)) {
             return $this->loadFromCache($cacheKey);
         } else {
+            if(isset($opts['allintitle']) && $opts['allintitle']) {
+                $keyword = 'allintitle:'.$keyword;
+            }
             $result = $this->engine->getResults($keyword, $language, $location, $opts);
             $this->storeInCache($cacheKey, $result);
             return $result;

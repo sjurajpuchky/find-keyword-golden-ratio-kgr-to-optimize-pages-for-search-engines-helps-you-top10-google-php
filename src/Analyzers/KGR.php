@@ -15,21 +15,21 @@ class KGR extends Analyzer implements IAnalyzer
         if ($this->isCached($cacheKey)) {
             return $this->loadFromCache($cacheKey);
         } else {
-            $suggestions = (new Suggestion($this->engine))->getResult($keywords, $language, $locationIds, ['number-results' => 100, 'max-volume' => $opts['max-volume'], 'min-volume' => $opts['min-volume']]);
+            $suggestions = (new Suggestion($this->engine,$this->cache))->getResult($keywords, $language, $locationIds, ['number-results' => 100, 'max-volume' => $opts['max-volume'], 'min-volume' => $opts['min-volume']]);
             $count = 0;
             $result = [];
             foreach ($suggestions as $keyword => $suggestion) {
                 $volume = $suggestion['volume'];
-                $numberOfResults = (new Results($this->engine))->getResult($keyword, $language, $locationIds, []);
-                $kgr = $numberOfResults / $volume;
-                if ($kgr <= 0.25) {
-                    $result[$keyword] = $kgr;
+                $numberOfResults = (new Results($this->engine,$this->cache))->getResult($keyword, $language, $locationIds, ['allintitle' => true]);
+                if(self::isKgr($numberOfResults, $volume)) {
+                    $result[$keyword] = ($numberOfResults / $volume);
                 }
                 $count++;
                 if ($count >= $opts['number-results']) {
                     break;
                 }
             }
+            $result  = sort($result);
             $this->storeInCache($cacheKey, $result);
             return $result;
         }
@@ -37,6 +37,9 @@ class KGR extends Analyzer implements IAnalyzer
 
     public static function isKgr($numberOfResults, $volume)
     {
+        if($volume > 250) {
+            return false;
+        }
         return ($numberOfResults / $volume) <= 0.25;
     }
 

@@ -15,4 +15,5 @@ interface ISearchEngine {
     public function getConfig();
     public function isAuthenticated();
     public function getSuggestions($param, $languageId, $locationId, $opts);
+
 }

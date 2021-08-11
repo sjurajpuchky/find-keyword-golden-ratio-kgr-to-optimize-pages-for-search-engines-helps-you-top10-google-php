@@ -20,12 +20,16 @@ if($argc > 1) {
     }
     fclose($fp);
     foreach ($keywords as $keyword => $volume) {
-        $results = (new Results($engine,$cache))->getResult($keyword, 'lang_cs',['cs'],[]);
-        echo "Checking $keyword ($results)\n";
-        if (KGR::isKgr($results, $volume)) {
-            $list[$keyword] = $results / $volume;
-            $volumes[$keyword] = $volume;
-            echo "Found kgr $keyword\n";
+        if($volume <= 250) {
+            $results = (new Results($engine, $cache))->getResult($keyword, 'lang_cs', ['cs'], ['allintitle' => true]);
+            echo "Checking $keyword ($results/$volume)\n";
+            if (KGR::isKgr($results, $volume)) {
+                $list[$keyword] = $results / $volume;
+                $volumes[$keyword] = $volume;
+                echo "Found kgr $keyword with {$list[$keyword]}\n";
+            }
+        } else {
+            echo "Ignoring $keyword for $volume\n";
         }
     }
 
@@ -34,7 +38,7 @@ if($argc > 1) {
         echo "$keyword:$kgr:".$volumes[$keyword]."\n";
         $t += (1/$kgr) * $volumes[$keyword];
      }
-    echo "Totally potential $t\n";
+    echo "Totally potential trafic $t\n";
 } else {
     echo "Usage: php kgr-csv.php <csv file>\n";
 }

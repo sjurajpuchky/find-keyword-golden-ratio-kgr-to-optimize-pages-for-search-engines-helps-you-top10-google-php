@@ -11,7 +11,7 @@ class Analyzer
     /** @var ISearchEngine $engine */
     protected $engine;
     /** @var Cache $cache */
-    private $cache;
+    protected $cache;
 
     /**
      * Analyzer constructor.
