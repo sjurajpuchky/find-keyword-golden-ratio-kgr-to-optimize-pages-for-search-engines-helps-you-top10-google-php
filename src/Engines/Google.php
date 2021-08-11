@@ -333,14 +333,13 @@ class Google extends Engine implements ISearchEngine
         $elm = $xpath->query("//*/div[@id='result-stats']")->item(0);
         if ($elm) {
             $result = $elm->textContent;
-            if(!empty($result)) {
-                {
-                    $result = explode('(', explode(':', $result)[1])[0];
-                    return str_replace([' ', " "], '', $result);
-                } else {
-                    return 0;
-                }
+            if (!empty($result)) {
+                $result = explode('(', explode(':', $result)[1])[0];
+                return str_replace([' ', " "], '', $result);
+            } else {
+                return 0;
             }
+        }
         }
 
         return 0;
