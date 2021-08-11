@@ -11,7 +11,7 @@ $engine = new Google();
 $cache = new \BABA\Cache\Cache(new \BABA\Cache\Drivers\Disk());
 $list = [];
 $volumes = [];
-if($argc > 1) {
+if($argc > 2) {
     $fp = fopen($argv[1], 'r');
     $head = fgetcsv($fp, 10000, ";");
     $keywords = [];
@@ -44,11 +44,17 @@ if($argc > 1) {
     }
 
     $t = 0;
+    $content = "keyword;kgr;volume\n";
     foreach($list as $keyword => $kgr) {
-        echo "$keyword:$kgr:".$volumes[$keyword]."\n";
-        $t += (1/$kgr) * $volumes[$keyword];
+        $content.= "$keyword;$kgr;".$volumes[$keyword]."\n";
+        if($kgr == 0) {
+            $t += $volumes[$keyword];
+        } else {
+            $t += (1 / $kgr) * $volumes[$keyword];
+        }
      }
-    echo "Totally potential trafic $t\n";
+    file_put_contents($argv[2],$content);
+    echo "Totally potential traffic $t\n";
 } else {
-    echo "Usage: php kgr-csv.php <csv file>\n";
+    echo "Usage: php kgr-csv.php <csv file> <out csv file>\n";
 }
