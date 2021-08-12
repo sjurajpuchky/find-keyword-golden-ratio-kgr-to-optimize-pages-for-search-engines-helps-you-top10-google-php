@@ -27,7 +27,7 @@ if ($argc > 2) {
         $volumes[$keyword] = $volume;
         if ($volume <= 250 && $volume > 0) {
             echo "Checking $keyword ($volume)...";
-            $results = (new Results($engine, $cache))->getResult($keyword, 'lang_cs', ['cs'], ['allintitle' => true]);
+            $results = (new Results($engine, $cache))->getResult($keyword, 'lang_sk', ['sk'], ['allintitle' => true]);
             $foundResults[$keyword] = $results;
 
             if (KGR::isKgr($results, $volume)) {

@@ -67,4 +67,6 @@ https://www.webtrace.cz - Tvorba portálů a ecommerce b2b/b2c (eshopů) na zak�
 &copy; 2021 BABA Tumise s.r.o.
 
 # Thanks to
-Created with help of Dalibor Jaroš CEO Collabimu and theirs free webinar about kgr https://collabim.teachable.com/p/umisteni-v-top10-na-google-do-48-hodin, you can also check https://collabim.teachable.com/p/seo-trenink-od-collabimu which is best seo webinar ever
+Created with help of Dalibor Jaroš - CEO of Collabim and their webinar about KGR SEO method (https://collabim.cz/kgr),
+
+you can also check SEO trénink (https://collabim.cz/seo-trenink) which is one of the actually most honored SEO course on the Czech market.
