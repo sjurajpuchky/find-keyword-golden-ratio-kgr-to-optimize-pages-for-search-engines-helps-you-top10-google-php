@@ -39,7 +39,8 @@ Instance of Engine requires instance of Cache Driver to store results in the cac
 https://www.youtube.com/watch?v=KQsGHZSY64I
 
 # Where get long tail keywords?
-I am suing Semrush https://www.semrush.com (Magick Keyword tool) which I recommend buying, but in application is also implemented google-ads API keyword planner, for which you must have MMC account with activated developer token
+in application is also implemented google-ads API keyword planner, for which you must have MMC account with activated developer token
+If you do not have google-ads-api developer token, you can use collabim or semrush
 
 # License
 GPL-2.0-only
