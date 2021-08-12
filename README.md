@@ -40,8 +40,8 @@ GPL-2.0-only
 
 # Authors
 Juraj Puchký - BABA Tumise s.r.o. <info@baba.bj>
-
 https://www.baba.bj
+https://www.webtrace.cz
 
 # Log
 1.0.0 - first release
@@ -52,3 +52,6 @@ https://www.baba.bj
 
 # Copyright
 &copy; 2021 BABA Tumise s.r.o.
+
+# Thanks to
+Created with help of Dalibor Jaroš CEO Collabimu and theirs free webinar about kgr https://collabim.teachable.com/p/umisteni-v-top10-na-google-do-48-hodin, you can also check https://collabim.teachable.com/p/seo-trenink-od-collabimu which is best seo webinar ever
