@@ -50,6 +50,8 @@ https://www.webtrace.cz
 
 1.0.2 - future keywords
 
+1.0.3 - better statistics in sample
+
 # Copyright
 &copy; 2021 BABA Tumise s.r.o.
 
