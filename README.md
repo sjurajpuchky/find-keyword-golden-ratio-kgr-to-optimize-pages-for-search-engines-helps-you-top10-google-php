@@ -35,6 +35,9 @@ In folder samples you can find some basic usage of library.
 As you can see in samples you have to first make instance of Engine then pass Engine to Analyzer tool, which has an interface to call operation with results.
 Instance of Engine requires instance of Cache Driver to store results in the cache.
 
+# Tutorial
+https://www.youtube.com/watch?v=KQsGHZSY64I
+
 # License
 GPL-2.0-only
 
