@@ -40,8 +40,12 @@ GPL-2.0-only
 
 # Authors
 Juraj Puchký - BABA Tumise s.r.o. <info@baba.bj>
-https://www.baba.bj
-https://www.webtrace.cz
+
+https://www.seoihned.cz - SEO optilamizace
+
+https://www.baba.bj - Tvorba webových stránek
+
+https://www.webtrace.cz - Tvorba portálů a ecommerce b2b/b2c (eshopů) na zakázku
 
 # Log
 1.0.0 - first release
