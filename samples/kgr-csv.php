@@ -21,7 +21,7 @@ if ($argc > 3) {
     }
     fclose($fp);
     foreach ($keywords as $keyword => $volume) {
-        if ($volume <= 250) {
+        if ($volume <= 250 && $volume > 0) {
             echo "Checking $keyword ($volume)...";
             $results = (new Results($engine, $cache))->getResult($keyword, 'lang_cs', ['cs'], ['allintitle' => true]);
             if (KGR::isKgr($results, $volume)) {
@@ -33,15 +33,15 @@ if ($argc > 3) {
                     echo "Kgr with {$list[$keyword]} and {$results} results found\n";
                 }
             } else {
-                if($volume == 0) {
-                    $potentialy[] = $keyword;
-                    echo "Potentialy future kgr\n";
-                } else {
                     echo "Not kgr\n";
-                }
             }
         } else {
-            echo "Ignoring $keyword for $volume\n";
+            if($volume == 0) {
+                $potentialy[] = $keyword;
+                echo "Potentialy future kgr\n";
+            } else {
+                echo "Ignoring $keyword for $volume\n";
+            }
         }
     }
 
