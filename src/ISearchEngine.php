@@ -6,7 +6,7 @@ namespace BABA\Search;
  *
  * @author jpuchky
  */
-interface ISearchEngine {
+interface ISearchEngine  {
 
     public function search($keyword, $language, $location, $num, $from);
     public function collectResultData($keyword, $language, $num, $from);
