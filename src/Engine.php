@@ -9,7 +9,7 @@ use DOMDocument;
  *
  * @author jpuchky
  */
-class Engine {
+class Engine extends AbstractEngine {
 
 
     /**

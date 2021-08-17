@@ -14,6 +14,9 @@ interface ISearchEngine {
     public function getConfigFile();
     public function getConfig();
     public function isAuthenticated();
-    public function getSuggestions($param, $languageId, $locationId, $opts);
+    public function authentication($default = './tokens/auth.ini');
+    public function getSuggestions($param, $languageId, $locationId, $opts):array;
+    public function getResults($keyword, $language, $location, $opts):array;
+    public function getVolume($param, $languageId, $locationIds, $opts):array;
 
 }

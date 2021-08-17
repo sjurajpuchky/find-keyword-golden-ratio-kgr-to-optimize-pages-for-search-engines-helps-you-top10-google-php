@@ -28,9 +28,9 @@ class Google extends Engine implements ISearchEngine
 {
 
     const SEARCH_URL = 'https://www.google.com/search?q=';
-    private $config = [];
-    private $authenticated = false;
-    private $configFile = './tokens/google-ads.ini';
+    protected $config = [];
+    protected $authenticated = false;
+    protected $configFile = './tokens/google-ads.ini';
 
     /**
      * @param $keyword

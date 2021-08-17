@@ -26,6 +26,12 @@ Our library depends on the package "baba/object-cache", which is used for preven
 # Supported engines
 - Google
 
+# Supported APIs
+- Google ADS API with MMC account, developer token
+- Collabim API
+- Kwfinder API
+- Semrush API
+
 # Examples
 In folder samples you can find some basic usage of library.
 
@@ -40,7 +46,7 @@ https://www.youtube.com/watch?v=KQsGHZSY64I
 
 # Where get long tail keywords?
 in application is also implemented google-ads API keyword planner, for which you must have MMC account with activated developer token
-If you do not have google-ads-api developer token, you can use collabim or semrush
+If you do not have google-ads-api developer token, you can use collabim (https://www.collabim.com/?promoCode=mRfeciXH1V), semrush (https://semrush.sjv.io/zaeLbr) or kwfinder (https://kwfinder.com#a610ee61bfeebf87f1c28d2d6)
 
 # License
 GPL-2.0-only
@@ -63,10 +69,12 @@ https://www.webtrace.cz - Tvorba portálů a ecommerce b2b/b2c (eshopů) na zak�
 
 1.0.3 - better statistics in sample
 
+
+
 # Copyright
 &copy; 2021 BABA Tumise s.r.o.
 
 # Thanks to
-Created with help of Dalibor Jaroš - CEO of Collabim and their webinar about KGR SEO method (https://collabim.cz/kgr),
+Created with help of Dalibor Jaroš - CEO of Collabim and their webinar about KGR SEO method (https://collabim.cz/kgr?promoCode=mRfeciXH1V),
 
-you can also check SEO trénink (https://collabim.cz/seo-trenink) which is one of the actually most honored SEO course on the Czech market.
+you can also check SEO trénink (https://collabim.cz/seo-trenink?promoCode=mRfeciXH1V) which is one of the actually most honored SEO course on the Czech market.
