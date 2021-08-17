@@ -3,6 +3,7 @@
 namespace BABA\Search;
 
 use DOMDocument;
+use Exception;
 
 /**
  * Description of Search
@@ -10,6 +11,31 @@ use DOMDocument;
  * @author jpuchky
  */
 class Engine extends AbstractEngine {
+
+    public function search($keyword, $language, $location, $num, $from = 0): array
+    {
+        // TODO: Implement search() method.
+    }
+
+    public function authentication($configFile = './tokens/auth.ini'): bool
+    {
+        // TODO: Implement authentication() method.
+    }
+
+    public function getVolume($param, $languageId, $locationIds, $opts): array
+    {
+        // TODO: Implement getVolume() method.
+    }
+
+    public function getSuggestions($param, $languageId, $locationIds, $opts): array
+    {
+        // TODO: Implement getSuggestions() method.
+    }
+
+    public function getResults($keyword, $language, $location, $opts)
+    {
+        // TODO: Implement getResults() method.
+    }
 
 
     /**

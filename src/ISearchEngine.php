@@ -16,7 +16,7 @@ interface ISearchEngine  {
     public function isAuthenticated();
     public function authentication($default = './tokens/auth.ini');
     public function getSuggestions($param, $languageId, $locationId, $opts):array;
-    public function getResults($keyword, $language, $location, $opts):array;
+    public function getResults($keyword, $language, $location, $opts);
     public function getVolume($param, $languageId, $locationIds, $opts):array;
 
 }
