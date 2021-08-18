@@ -45,8 +45,9 @@ Instance of Engine requires instance of Cache Driver to store results in the cac
 https://www.youtube.com/watch?v=KQsGHZSY64I
 
 # Where get long tail keywords?
-in application is also implemented google-ads API keyword planner, for which you must have MMC account with activated developer token
+in application is also implemented google-ads API keyword planner, for which you must have MMC account with activated developer token. Or export results from keyword planner in ADS to CSV, (keyword;volume) format.
 If you do not have google-ads-api developer token, you can use collabim (https://www.collabim.com/?promoCode=mRfeciXH1V), semrush (https://semrush.sjv.io/zaeLbr) or kwfinder (https://kwfinder.com#a610ee61bfeebf87f1c28d2d6)
+Wonderful is also keyword-researcher (http://babatumise.clevergiz.hop.clickbank.net?cgpage=keyword-researcher) and Answer the public (https://answerthepublic.com/)
 
 # License
 GPL-2.0-only
