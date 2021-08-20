@@ -2,6 +2,8 @@
 
 namespace BABA\Search;
 
+use BABA\Search\Exceptions\TooManyRequestsException;
+use BABA\Search\Exceptions\UnknownHttpCodeException;
 use DOMDocument;
 use Exception;
 
@@ -75,9 +77,11 @@ class Engine extends AbstractEngine {
 
         return $cookies;
     }
+
     /**
      * @param $url
      * @return bool|string
+     * @throws TooManyRequestsException|UnknownHttpCodeException
      */
     public function getData($url,$userAgent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36') {
         $ch = curl_init();
@@ -86,12 +90,24 @@ class Engine extends AbstractEngine {
         curl_setopt($ch, CURLOPT_VERBOSE, false);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-        curl_setopt($ch, CURLOPT_COOKIEJAR, $this->getName().'.txt');
-        curl_setopt($ch, CURLOPT_COOKIEFILE,$this->getName().'.txt');
+        curl_setopt($ch, CURLOPT_COOKIEJAR, $this->getName() . '.txt');
+        curl_setopt($ch, CURLOPT_COOKIEFILE, $this->getName() . '.txt');
 
 
         curl_setopt($ch, CURLOPT_USERAGENT, $userAgent);
-        return curl_exec($ch);
+        $result = curl_exec($ch);
+        $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+        switch ($http_code) {
+            case 200:
+                return $result;
+                break;
+            case 429:
+                throw new TooManyRequestsException("TooManyRequests on " . $this->getName());
+                break;
+            default:
+                throw new UnknownHttpCodeException('HTTP Status code: ' . $http_code . ' on ' . $this->getName());
+        }
     }
 
     /**
