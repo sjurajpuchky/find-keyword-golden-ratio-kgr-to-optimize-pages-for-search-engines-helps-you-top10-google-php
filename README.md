@@ -1,5 +1,6 @@
+
 # Find keyword golden ratio (kgr) to optimize pages for search engines and other utilities for seo in php 
-# my page TOP 10 on Google within 48 hours
+## my page TOP 10 on Google within 48 hours
 ## Make your page TOP 10 on google in 48 hours
 ### Quick tool which helps you make your page TOP 10 on Google in 48 hours
 Main purpose of this library is to automate SEO routine for finding **KGR** **keyword golden ratio**.
