@@ -1,4 +1,3 @@
-
 # Find keyword golden ratio (kgr) to optimize pages for search engines and other utilities for seo in php 
 ## my page TOP 10 on Google within 48 hours
 ## Make your page TOP 10 on google in 48 hours
@@ -9,7 +8,7 @@ This tool will help you simply on **long tail keyword** **make your page top 10 
 # Install
 
 ```
-git clone https://github.com/sjurajpuchky/search-analytics-utilities.git
+git clone https://github.com/sjurajpuchky/find-keyword-golden-ratio-kgr-to-optimize-pages-for-search-engines-helps-you-top10-google-php.git
 cd search-analytics-utilities
 composer install
 ```
