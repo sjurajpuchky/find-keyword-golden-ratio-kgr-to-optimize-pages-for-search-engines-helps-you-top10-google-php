@@ -1,4 +1,5 @@
-# Find keyword golden ratio (kgr) to optimize pages for search engines and other utilities for seo in php my page TOP 10 on Google within 48 hours
+# Find keyword golden ratio (kgr) to optimize pages for search engines and other utilities for seo in php 
+# my page TOP 10 on Google within 48 hours
 ## Make your page TOP 10 on google in 48 hours
 ### Quick tool which helps you make your page TOP 10 on Google in 48 hours
 Main purpose of this library is to automate SEO routine for finding **KGR** **keyword golden ratio**.
@@ -6,9 +7,11 @@ This tool will help you simply on **long tail keyword** **make your page top 10 
 
 # Install
 
-git clone https://github.com/sjurajpuchky/search-analytics-utilities.git or download from https://github.com/sjurajpuchky/search-analytics-utilities and unzip
+```
+git clone https://github.com/sjurajpuchky/search-analytics-utilities.git
 cd search-analytics-utilities
 composer install
+```
 
 For google-ads-api suggestions you need activated mmc account and developer key, once you can't have it you can use sample kgr-csv.php with keywords and volumes in csv, which you can obtain from google-ads onr another seo tool as well.
 Feel free to look into samples folder and checkout 
