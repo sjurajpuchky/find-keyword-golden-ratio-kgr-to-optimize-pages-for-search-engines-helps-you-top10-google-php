@@ -85,4 +85,4 @@ Created with help of Dalibor Jaroš - CEO of Collabim and their webinar about KG
 you can also check SEO trénink (https://collabim.cz/seo-trenink?promoCode=mRfeciXH1V) which is one of the actually most honored SEO course on the Czech market.
 
 # Special discount
-for Collabim services and products you can use discount coupon AFF-DIS-30, coupon is possible to use only with links mentinoned above.
+for Collabim services and products you can use discount coupon AFF-DIS-30, coupon is possible to use only with links mentioned above.
