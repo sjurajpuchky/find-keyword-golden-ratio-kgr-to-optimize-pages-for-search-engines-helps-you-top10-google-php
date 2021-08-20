@@ -23,7 +23,7 @@ class Collabim extends Google implements ISearchEngine
         $ini = Engine::parseIni($configFile);
 
         if (empty($ini['COLLABIM']['apiKey'])) {
-            throw new Exception("apiKey is required in $configFile section [COLLABIM], you can request it on www.collabim.cz\n");
+            throw new Exception("apiKey is required in $configFile section [COLLABIM], you can request it on https://www.collabim.com/?promoCode=mRfeciXH1V\n");
         }
 
         $this->config = $ini;

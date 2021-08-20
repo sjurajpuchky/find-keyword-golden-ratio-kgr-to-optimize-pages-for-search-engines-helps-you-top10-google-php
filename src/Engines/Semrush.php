@@ -16,7 +16,7 @@ class Semrush extends Google  implements ISearchEngine
      * @return bool
      * @throws Exception
      */
-    public function authentication($configFile = './tokens/collabim.ini'): bool
+    public function authentication($configFile = './tokens/semrush.ini'): bool
     {
         if (!file_exists($configFile)) {
             throw new Exception("$configFile does not exists.");
@@ -25,7 +25,7 @@ class Semrush extends Google  implements ISearchEngine
         $ini = Engine::parseIni($configFile);
 
         if (empty($ini['SEMRUSH']['apiKey'])) {
-            throw new Exception("apiKey is required in $configFile section [SEMRUSH], you can request it on www.semrush.com\n");
+            throw new Exception("apiKey is required in $configFile section [SEMRUSH], you can request it on https://semrush.sjv.io/zaeLbr\n");
         }
 
         $this->config = $ini;

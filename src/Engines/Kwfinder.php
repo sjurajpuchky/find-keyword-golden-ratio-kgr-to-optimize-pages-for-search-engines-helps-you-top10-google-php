@@ -25,7 +25,7 @@ class Kwfinder extends Google  implements ISearchEngine
         $ini = Engine::parseIni($configFile);
 
         if (empty($ini['KWFINDER']['apiKey'])) {
-            throw new Exception("apiKey is required in $configFile section [KWFINDER], you can request it on www.kwfinder.com\n");
+            throw new Exception("apiKey is required in $configFile section [KWFINDER], you can request it on https://kwfinder.com#a610ee61bfeebf87f1c28d2d6\n");
         }
 
         $this->config = $ini;
