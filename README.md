@@ -1,5 +1,8 @@
-# search-analytics-utilities
-Main purpose of this library is to automate SEO routine for finding KGR.
+# Find keyword golden ratio (kgr) to optimize pages for search engines and other utilities for seo in php, and make your page TOP 10 on Google within 48 hours
+## Make your page TOP 10 on google in 48 hours
+### Quick tool which helps you make your page TOP 10 on Google in 48 hours
+Main purpose of this library is to automate SEO routine for finding **KGR** **keyword golden ratio**.
+This tool will help you simply on **long tail keyword** **make your page top 10 on google within 48 hours**.
 
 # Install
 
