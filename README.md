@@ -77,6 +77,8 @@ https://www.webtrace.cz - Tvorba portálů a ecommerce b2b/b2c (eshopů) na zak�
 
 1.3.6 - tested google ads api suggestions with kgr + samples
 
+1.4.0 - collabim api implemented
+
 # Copyright
 &copy; 2021 BABA Tumise s.r.o.
 
