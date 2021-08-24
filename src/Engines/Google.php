@@ -274,16 +274,12 @@ class Google extends Engine implements ISearchEngine
 
         if (empty($param)) {
             throw new \InvalidArgumentException(
-                'At least one of keywords or page URL is required, but neither was specified.'
+                'Keyword is required.'
             );
         }
 
         $requestOptionalArgs = [];
-        if (!is_array($param)) {
-            $requestOptionalArgs['urlSeed'] = new UrlSeed(['url' => $param]);
-        } else {
             $requestOptionalArgs['keywordSeed'] = new KeywordSeed(['keywords' => $param]);
-        }
 
 
         $geoTargetConstants = array_map(function ($locationId) {
@@ -304,9 +300,12 @@ class Google extends Engine implements ISearchEngine
         $i = 0;
         foreach ($response->iterateAllElements() as $result) {
             /** @var GenerateKeywordIdeaResult $result */
-            if ($opts['max-volume'] >= is_null($result->getKeywordIdeaMetrics()) ? 0 : ($result->getKeywordIdeaMetrics()->getAvgMonthlySearches() && $opts['min-volume'] <= is_null($result->getKeywordIdeaMetrics()) ? 0 : $result->getKeywordIdeaMetrics()->getAvgMonthlySearches())) {
+            if
+                (is_null($opts['max-volume']) || ($opts['max-volume'] >= (is_null($result->getKeywordIdeaMetrics()) ? 0 : ($result->getKeywordIdeaMetrics()->getAvgMonthlySearches()))) &&
+                (is_null($opts['min-volume']) || ($opts['min-volume'] <= (is_null($result->getKeywordIdeaMetrics()) ? 0 : $result->getKeywordIdeaMetrics()->getAvgMonthlySearches()))))
+             {
                 $results[$result->getText()] = [
-                    'mothly' => is_null($result->getKeywordIdeaMetrics()) ? 0 : $result->getKeywordIdeaMetrics()->getAvgMonthlySearches(),
+                    'monthly' => is_null($result->getKeywordIdeaMetrics()) ? 0 : $result->getKeywordIdeaMetrics()->getAvgMonthlySearches(),
                     'competition' => is_null($result->getKeywordIdeaMetrics()) ? 0 : $result->getKeywordIdeaMetrics()->getCompetition()];
 
                 $i++;
