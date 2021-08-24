@@ -4,3 +4,4 @@ cache
 tokens
 *.txt
 tmp
+composer.lock

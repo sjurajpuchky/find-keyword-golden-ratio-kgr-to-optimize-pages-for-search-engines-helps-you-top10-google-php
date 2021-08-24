@@ -2,6 +2,7 @@
   "name": "baba/search-analytics-utilities",
   "type": "library",
   "license": "GPL-2.0-only",
+  "minimum-stability": "dev",
   "authors": [
     {
       "name": "Juraj Puchký - BABA Tumise s.r.o.",
@@ -20,6 +21,7 @@
     "php": ">=7.3",
     "ext-json": "*",
     "baba/object-cache": "dev-main",
+    "baba/collabim-api-client": "dev-main",
     "ext-dom": "*",
     "ext-libxml": "*",
     "ext-curl": "*",
