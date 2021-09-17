@@ -18,5 +18,5 @@ interface ISearchEngine  {
     public function getSuggestions($param, $languageId, $locationId, $opts):array;
     public function getResults($keyword, $language, $location, $opts);
     public function getVolume($param, $languageId, $locationIds, $opts):array;
-
+//    public function getIndex($site): array;
 }

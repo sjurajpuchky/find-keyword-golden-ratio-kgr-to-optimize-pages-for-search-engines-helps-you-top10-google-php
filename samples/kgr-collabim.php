@@ -14,7 +14,7 @@ $engine = new Google();
 $engine2 = new Collabim();
 
 // Load API KEY from config and
-$engine2->authentication(__DIR__.'/collabim.ini');
+$engine2->authentication(__DIR__.'/../tokens/collabim.ini');
 
 $cache = new Cache(new Disk(),24*3600);
 $list = [];

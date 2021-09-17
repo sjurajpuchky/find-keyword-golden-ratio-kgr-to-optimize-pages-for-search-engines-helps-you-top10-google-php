@@ -73,7 +73,7 @@ class Collabim extends Google implements ISearchEngine
         }
 
         $results = $this->client->oneTimeAnalysesKeywordMeasuring($locationIds[0], $param, $opts['search-engine'], $opts['priority']);
-
+var_dump($results);
         // TODO: Processing results
         $ret = [];
 
