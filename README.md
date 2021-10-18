@@ -57,7 +57,7 @@ If you do not have google-ads-api developer token, you can use collabim (https:/
 Wonderful is also keyword-researcher (http://babatumise.clevergiz.hop.clickbank.net?cgpage=keyword-researcher) and Answer the public (https://answerthepublic.com/)
 
 # License
-GPL-2.0-only for non-commercial usage. What that means? If you plan to use it for your own projects it's free of charge, but if you like to use in your commercial application is payed with subscrption fee and has support. Other wise is without support.
+GPL-2.0-only for non-commercial usage. What that means? If you plan to use it for your own projects it's free of charge, but if you like to use in your commercial application is payed with subscrption fee and has support. Otherwise is without support.
 
 
 # Authors
