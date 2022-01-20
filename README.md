@@ -59,6 +59,14 @@ Wonderful is also keyword-researcher (http://babatumise.clevergiz.hop.clickbank.
 # License
 GPL-2.0-only for non-commercial usage. What that means? If you plan to use it for your own projects it's free of charge, but if you like to use in your commercial application is payed with subscrption fee and has support. Otherwise is without support.
 
+# For COMMERCIAL use ask us
+For commercial use, contact us on info@baba.bj, to request permission for access to privete repository, where is all needed to do proffesional KGR analysis for your clients. Subbscriptions payment is 100€ per year without limits. Commercial version of application is with support and contains lot of new functions like
+  - connection to varius APIs
+  - multiple search engines support
+  - API for our Keyword suggestion API
+  - reporting in PDF with HTML Twig templates
+  - extended tools
+  - and others
 
 # Authors
 Juraj Puchký - BABA Tumise s.r.o. <info@baba.bj>
