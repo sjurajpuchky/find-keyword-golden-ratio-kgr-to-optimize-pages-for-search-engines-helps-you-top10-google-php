@@ -12,7 +12,7 @@ https://www.youtube.com/watch?v=KQsGHZSY64I
 # Install
 
 ```
-git clone https://github.com/sjurajpuchky/find-keyword-golden-ratio-kgr-to-optimize-pages-for-search-engines-helps-you-top10-google-php.git
+git clone https://github.com/sjurajpuchky/find-keyword-golden-ratio-kgr-to-optimize-pages-for-search-engines-helps-you-top10-google-php.git search-analytics-utilities
 cd search-analytics-utilities
 composer install
 ```
@@ -104,3 +104,6 @@ you can also check SEO trénink (https://collabim.cz/seo-trenink?promoCode=mRfec
 
 # Special discount
 for Collabim services and products you can use discount coupon AFF-DIS-30, coupon is possible to use only with links mentioned above.
+
+# Services
+we provide kgr analysis service, for fixed fee, contact me info@baba.bj
