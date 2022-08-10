@@ -5,6 +5,10 @@
 Main purpose of this library is to automate SEO routine for finding **KGR** **keyword golden ratio**.
 This tool will help you simply on **long tail keyword** **make your page top 10 on google within 48 hours**.
 
+# Tutorial
+
+https://www.youtube.com/watch?v=KQsGHZSY64I
+
 # Install
 
 ```
